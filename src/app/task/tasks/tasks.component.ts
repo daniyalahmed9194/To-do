@@ -1,12 +1,6 @@
-import { Component , Input} from '@angular/core';
+import { Component , Input, EventEmitter, Output} from '@angular/core';
 
-type Task = {
-  id: string;
-  userId: string;
-  title: string;
-  dueDate: string;
-  status: string;
-};
+import { Task } from './tasks.model'; // import the task model from the task.model.ts file.
 
 @Component({
   selector: 'app-tasks',
@@ -16,4 +10,8 @@ type Task = {
 })
 export class TasksComponent {
 @Input({required: true}) task!: Task;
-}
+@Output() complete = new EventEmitter<string>(); 
+
+onCompleteTask() {
+  this.complete.emit(this.task.id); // we are emitting the task id to the parent component when the task is completed.
+}}

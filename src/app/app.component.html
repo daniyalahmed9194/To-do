@@ -3,7 +3,11 @@
   <ul id="users">
     @for (user of users; track user.id) {
     <li>
-      <app-user [user]="user" (select)="onSelectUser($event)" />
+      <app-user
+        [selected]="user.id === selectedUserId"
+        [user]="user"
+        (select)="onSelectUser($event)"
+      />
     </li>
     }
     <!-- [id]="users[0].id"
@@ -16,10 +20,13 @@
     </li> -->
   </ul>
 
-  @if(selectedUser){<app-task [userId]="selectedUser.id" [name]="selectedUser.name" />}
+  @if(selectedUser){<app-task
+    [userId]="selectedUser.id"
+    [name]="selectedUser.name"
+  />}
 
   <!--the reason for adding ? is that if there is any undefined value it handle it  -->
   @else {
-    <p id = "fallback" >Select a user to see their task</p>
+  <p id="fallback">Select a user to see their task</p>
   }
 </main>

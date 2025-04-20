@@ -1,19 +1,12 @@
 import {
   Component,
-  computed,
-  signal,
   Input,
   Output,
   EventEmitter,
 } from '@angular/core';
 
-import { DUMMY_USERS } from '../dummy-users';
-import { CssSelector } from '@angular/compiler';
+import {User} from './user.model'; 
 
-interface User {
-  id: string;
-  name: string;
-  avatar: string;}
 
 @Component({
   selector: 'app-user',
@@ -41,7 +34,7 @@ export class UserComponent {
   // @Input({required: true}) id!: string;
 
   // the other method of input. taking users as an object.
-
+  @Input({ required: true }) selected!: boolean;
   @Input({ required: true }) user!: User; // we can also use the interface and type as alias. the type will can be for any type alias and interface is for the object type. 
 
 

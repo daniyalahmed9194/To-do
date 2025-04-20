@@ -1,6 +1,7 @@
 import { Component , Input} from '@angular/core';
 import { TasksComponent } from "./tasks/tasks.component";
 
+
 @Component({
   selector: 'app-task',
   imports: [TasksComponent],
@@ -35,6 +36,11 @@ tasks = [
  ]
 
  get selectedUserTasks() {
-  return this.tasks.filter((task) => task.userId === this.userId); // we are filtering the tasks based on the userId passed from the parent component.
- } // this will return the tasks which are related to the userId passed from the parent component.
-}
+  return this.tasks.filter((task) => task.userId === this.userId);
+ };
+
+ onCompleteTask(id: string) {
+    this.tasks = this.tasks.filter((task) => task.id !== id); 
+  }
+ } 
+// we are filtering the tasks array and removing the task with the id that is passed from the child component. so that it will not be shown in the list of tasks
