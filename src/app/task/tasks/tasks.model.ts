@@ -3,5 +3,5 @@ export type Task = {
   userId: string;
   title: string;
   dueDate: string;
-  status: string;
+  summary: string;
 };
